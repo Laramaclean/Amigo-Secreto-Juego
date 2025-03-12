@@ -1,65 +1,42 @@
-let amigos = [];
+const nombres = []; // Lista de nombres ingresados
 
 function agregarAmigo() {
     const input = document.getElementById("amigo");
-    const nombre = input.value.trim();
+    const nombre = input.value.trim(); // Elimina espacios en blanco
 
     if (nombre === "") {
-        alert("Por favor, ingresa un nombre válido.");
+        alert("⚠️ Por favor, ingresa un nombre válido.");
         return;
     }
-    
-    if (amigos.includes(nombre)) {
-        alert("Este nombre ya ha sido agregado.");
-        return;
-    }
-    
-    amigos.push(nombre);
-    actualizarLista();
-    input.value = "";
-}
 
-function actualizarLista() {
+    if (nombres.includes(nombre)) {
+        alert("⚠️ Este nombre ya fue ingresado. Ingresa otro.");
+        return;
+    }
+
+    nombres.push(nombre); // Agrega el nombre a la lista
+
+    // Agrega el nombre a la lista visual
     const lista = document.getElementById("listaAmigos");
-    lista.innerHTML = "";
-    amigos.forEach(amigo => {
-        const li = document.createElement("li");
-        li.textContent = amigo;
-        lista.appendChild(li);
-    });
+    const li = document.createElement("li");
+    li.textContent = nombre;
+    lista.appendChild(li);
+
+    input.value = ""; // Limpia el input después de agregar
 }
 
 function sortearAmigo() {
-    if (amigos.length < 2) {
-        alert("Debes ingresar al menos dos nombres para hacer el sorteo.");
+    if (nombres.length < 2) {
+        alert("⚠️ Debes ingresar al menos 2 nombres para sortear.");
         return;
     }
-    
-    let copiaAmigos = [...amigos];
-    let asignaciones = {};
-    
-    for (let amigo of amigos) {
-        let posibles = copiaAmigos.filter(a => a !== amigo);
-        
-        if (posibles.length === 0) {
-            return sortearAmigo();
-        }
-        
-        let seleccionado = posibles[Math.floor(Math.random() * posibles.length)];
-        asignaciones[amigo] = seleccionado;
-        copiaAmigos = copiaAmigos.filter(a => a !== seleccionado);
-    }
-    
-    mostrarResultados(asignaciones);
-}
 
-function mostrarResultados(asignaciones) {
-    const resultado = document.getElementById("resultado");
-    resultado.innerHTML = "";
-    
-    for (let [amigo, asignado] of Object.entries(asignaciones)) {
-        const li = document.createElement("li");
-        li.textContent = `${amigo} → ${asignado}`;
-        resultado.appendChild(li);
-    }
+    const resultadoLista = document.getElementById("resultado");
+    resultadoLista.innerHTML = ""; // Limpia el resultado anterior
+
+    const amigoSecreto = nombres[Math.floor(Math.random() * nombres.length)]; // Selecciona un nombre al azar
+
+    const li = document.createElement("li");
+    li.textContent = `🎉 El amigo secreto es: ${amigoSecreto}`;
+    resultadoLista.appendChild(li);
 }
