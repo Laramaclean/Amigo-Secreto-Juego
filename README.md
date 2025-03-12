@@ -15,10 +15,10 @@ Este es un juego en el cual se realiza un listado de nombres y, al apretar el bo
 
 # 📸 Capturas de pantalla  
 Pantalla principal:  
-![Pantalla principal](assets/captura1.png)  
+![Pantalla principal](images/Home.jpeg)  
 
 Resultado del sorteo:  
-![Resultado del sorteo](assets/captura2.png)  
+![Resultado del sorteo](images/Resultado.jpeg)  
 
 # 🎥 Video de demostración  
-🔗 [Mira el video aquí](https://www.youtube.com/watch?v=tu-video)  
+🔗 [Mira el video aquí](https://youtu.be/BNNYcgrQPng)  
