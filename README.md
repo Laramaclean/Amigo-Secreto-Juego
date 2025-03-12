@@ -1,4 +1,4 @@
-# 🎉 amigo-secreto-challenge
+# 🎉  Amigo-Secreto-Juego
 
 Implementación del desafio del amigo secreto
 
